@@ -1,0 +1,40 @@
+/*Project "Useless Machine" in Physical Computing 001 
+ *Named "Barbie Hair Salon"
+ *Made by Ruby Tran and Luis Weatherhead
+ *February 25th 2020
+ *Resources from in-class code and examples from Arduino
+ */
+
+void setup() {
+  pinMode(11, OUTPUT); // The L9110 can control 2 motors. Each needs 2 pin. First pin is 11
+  pinMode(12, OUTPUT); //second pin is 12
+  pinMode(8, INPUT); //button is on pin 8
+  Serial.begin(9600); //to read serial monitor
+  pinMode(5, OUTPUT); // This is the second motor. First pin on this DC motor is 5
+  pinMode(4, OUTPUT); //second pin is 4
+  pinMode(7, INPUT); //button is on pin 7
+}
+
+void loop() {
+  if(digitalRead(8) == HIGH){ // when the button 8 is pressed
+      digitalWrite(11, LOW); // This will make the motor spin when one is low and the other is high
+      digitalWrite(12, HIGH);  
+      Serial.println("pressed"); //serial monitor reads "pressed"
+  } else {
+      digitalWrite(11, LOW); // This will make the motor stop when the button is not pressed
+      digitalWrite(12, LOW); //both pins are low means the motor stops
+      Serial.println("not pressed"); //serial monitor reads "not pressed"
+  }
+
+// this is the second DC motor
+    if(digitalRead(7) == HIGH){ //when the button 7 is pressed
+      digitalWrite(5, LOW); // This will make the motor spins
+      digitalWrite(4, HIGH); 
+      Serial.println("PRESS");
+  } else {
+      digitalWrite(5, LOW); // This will make the motor stop when the button is not pressed
+      digitalWrite(4, LOW); //both pins are low means the motor stops
+      Serial.println("NOT PRESSED");
+  
+
+}
